@@ -1,3 +1,4 @@
+#This script creates an ec2 instance
 # Declare the provider
 provider "aws" {
   region = "us-west-1"  # Replace with your desired region
