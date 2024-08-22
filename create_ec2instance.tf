@@ -47,17 +47,3 @@ resource "aws_instance" "web" {
 output "instance_public_ip" {
   value = aws_instance.web.public_ip
 }
-
-# Create an AMI that will start a machine whose root device is backed by
-# an EBS volume populated from a snapshot. We assume that such a snapshot
-# already exists with the id "snap-xxxxxxxx".
-resource "aws_ami" "example" {
-  name                = "terraform-example"
-  root_device_name    = "/dev/xvda"
-  imds_support        = "v2.0" # Enforce usage of IMDSv2. You can safely remove this line if your application explicitly doesn't support it.
-  ebs_block_device {
-    device_name = "/dev/xvda"
-    snapshot_id = "snap-0f3fe49fb236b3945"
-    volume_size = 8
-  }
-}
